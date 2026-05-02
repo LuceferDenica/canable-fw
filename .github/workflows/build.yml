@@ -4,10 +4,10 @@ on:
 
 jobs:
   build:
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
   steps:
-  -name: Checout repo
+    -name: Checout repo
   uses: actions/checout@v4
 
   -name: Install toolchain
