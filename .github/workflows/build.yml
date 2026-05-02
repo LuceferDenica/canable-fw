@@ -6,8 +6,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-  
-  steps:
-  -uses: actions/checkout@v4
-  -run: echo "Repo loaded"
-  -run: ls -R
+
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "OK"
+      - run: ls -R
