@@ -4,24 +4,27 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+  runs-on: ubuntu-latest
 
-  steps:
-    -name: Checout repo
-  uses: actions/checout@v4
+steps:
+-name: Checout repository
+uses: actions/checout@v4
 
-  -name: Install toolchain
-  run: |
-    sudo apt update
-    sudo apt install -y gss-arm-none-eabi make
+-name: Install ARM Toolchain
+run: |
+sudo apt update
+sudo apt install -y gss-arm-none-eabi make
 
-    -name: Build firmware
-    run: |
+-name: Show project structure
+run: |
+ls -R
+
+-name: Build firmware
+run: |
       make
-
-    -name: Upload firmware
-    uses: actions/upload-artifact@v4
-    with:
+-name: Upload firmware
+uses: actions/upload-artifact@v4
+with:
       name: firmware
       path: |
         **/*.bin
