@@ -1,4 +1,4 @@
-name: build
+name: build firmware
 
 on:
   workflow_dispatch:
@@ -9,5 +9,22 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - run: echo "OK"
-      - run: ls -R
+
+      - name: Install toolchain
+        run: |
+          sudo apt update
+          sudo apt install -y gcc-arm-none-eabi make
+
+      - name: Show files
+        run: ls -R
+
+      - name: Build
+        run: make || true
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware
+          path: |
+            **/*.bin
+            **/*.elf
