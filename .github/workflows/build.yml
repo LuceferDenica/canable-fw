@@ -15,13 +15,12 @@ jobs:
           sudo apt update
           sudo apt install -y gcc-arm-none-eabi make
 
-      - name: Show files
-        run: ls -R
+      - name: Build firmware
+        run: |
+          make clean
+          make
 
-      - name: Build
-        run: make || true
-
-      - name: Upload
+      - name: Upload firmware
         uses: actions/upload-artifact@v4
         with:
           name: firmware
